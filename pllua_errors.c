@@ -174,7 +174,7 @@ void luatable_report(lua_State *L, int elevel)
     ereport(elevel,
             (errcode(edata.sqlerrcode ? edata.sqlerrcode : ERRCODE_EXTERNAL_ROUTINE_EXCEPTION),
              errmsg_internal("%s", edata.message ? edata.message : "no exception data"),
-             (edata.detail) ? errdetail_internal("%s", edata.detail) : 0,
+             (edata.detail) ? errdetail("%s", edata.detail) : 0,
              (edata.context) ? errcontext("%s", edata.context) : 0,
              (edata.hint) ? errhint("%s", edata.hint) : 0,
              (query) ? internalerrquery(query) : 0,
