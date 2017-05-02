@@ -80,12 +80,12 @@ static const char PLLUA_DATUM[] = "datum";
 #define MaxArraySize ((Size) (MaxAllocSize / sizeof(Datum)))
 
 /* back compatibility to 8.2 */
-#if PG_VERSION_NUM < 80300
-#define SET_VARSIZE(ptr, len) VARATT_SIZEP(ptr) = len
-#define att_addlength_pointer(len, typ, ptr) \
-  att_addlength(len, typ, PointerGetDatum(ptr))
-#define att_align_nominal(len, typ) att_align(len, typ)
-#endif
+//#if PG_VERSION_NUM < 80300
+//#define SET_VARSIZE(ptr, len) VARATT_SIZEP(ptr) = len
+//#define att_addlength_pointer(len, typ, ptr) \
+//  att_addlength(len, typ, PointerGetDatum(ptr))
+//#define att_align_nominal(len, typ) att_align(len, typ)
+//#endif
 
 #define info(msg) ereport(INFO, (errmsg("%s", msg)))
 #define argerror(type) \
