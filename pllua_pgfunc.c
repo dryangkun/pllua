@@ -138,7 +138,7 @@ pg_callable_func(lua_State *L)
 
 	fi = (Lua_pgfunc *) lua_touserdata(L, lua_upvalueindex(1));
 
-	InitFunctionCallInfoData(fcinfo, &fi->fi, fi->numargs, InvalidOid, NULL);
+	InitFunctionCallInfoData(fcinfo, &fi->fi, fi->numargs, NULL, NULL);
 
 #ifdef PGFUNC_CLEANUP
 	if(tmpcontext_usage> RESET_CONTEXT_AFTER ){
@@ -269,7 +269,7 @@ pgfunc_rows (lua_State *L) {
 	rsinfo->setResult = NULL;
 	rsinfo->setDesc = NULL;
 
-	InitFunctionCallInfoData((*fcinfo), &srfi->fi, fi->numargs, InvalidOid, (fmNodePtr)rsinfo);
+	InitFunctionCallInfoData((*fcinfo), &srfi->fi, fi->numargs, NULL, (fmNodePtr)rsinfo);
 
 	for (i=0; i<fi->numargs; ++i){
 		if(i>=argc){
