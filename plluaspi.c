@@ -164,7 +164,7 @@ luaP_pushrecord(lua_State *L, Datum record){
 		/* Build a temporary HeapTuple control structure */
 		tuple.t_len = HeapTupleHeaderGetDatumLength(header);
 		ItemPointerSetInvalid(&(tuple.t_self));
-		tuple.t_tableOid = InvalidOid;
+		//tuple.t_tableOid = InvalidOid;
 		tuple.t_data = header;
 
 		shared_desc = rtupdesc_ctor(L, tupdesc);
@@ -604,7 +604,7 @@ static HeapTuple luaP_copytuple (luaP_Tuple *t) {
   /* copy identification info */
   tuple->t_data->t_ctid = t->tuple->t_data->t_ctid;
   tuple->t_self = t->tuple->t_self;
-  tuple->t_tableOid = t->tuple->t_tableOid;
+  //tuple->t_tableOid = t->tuple->t_tableOid;
   if (t->tupdesc->tdhasoid)
     HeapTupleSetOid(tuple, HeapTupleGetOid(t->tuple));
   return SPI_copytuple(tuple); /* in upper mem context */
